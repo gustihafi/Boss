@@ -148,7 +148,7 @@
 									<a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fas fa-user"></i> My Profile</a>
 								</li>
 								<li>
-									<a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fas fa-power-off"></i> Logout</a>
+									<a role="menuitem" tabindex="-1" href="<?= base_url('Auth/logout') ?>" onClick="return confirm('Apakah Yakin Logout?')"><i class="fas fa-power-off"></i> Logout</a>
 								</li>
 							</ul>
 						</div>
@@ -176,29 +176,35 @@
 				            <nav id="menu" class="nav-main" role="navigation">
 				            
 				                <ul class="nav nav-main">
-				                    <li class="nav-active">
+				                    <li class="<?php echo $this->uri->segment(2) == '' ? 'nav-active': '' ?>">
 				                        <a class="nav-link" href="<?= base_url('C_boss') ?>">
 				                            <i class="fas fa-home" aria-hidden="true"></i>
 				                            <span>Dashboard</span>
 				                        </a>                        
 				                    </li>
-				                    <li class="nav-parent">
+				                    <li class="nav-parent <?php if($this->uri->segment(2) == 'meja'){
+										echo $this->uri->segment(2) == 'meja' ? 'nav-expanded nav-active': ''; 
+									}elseif($this->uri->segment(2) == 'menu'){
+										echo $this->uri->segment(2) == 'menu' ? 'nav-expanded nav-active': '';
+									}elseif($this->uri->segment(2) == 'bahan'){
+										echo $this->uri->segment(2) == 'bahan' ? 'nav-expanded nav-active': '';
+									} ?>">
 				                        <a class="nav-link" href="#">
 				                            <i class="fas fa-database" aria-hidden="true"></i>
 				                            <span>Data Master</span>
 				                        </a>
 				                        <ul class="nav nav-children">
-				                            <li>
+				                            <li class="<?php echo $this->uri->segment(2) == 'meja' ? 'nav-active': '' ?>">
 				                                <a class="nav-link" href="<?= base_url('C_boss/meja') ?>">
 				                                    Meja
 				                                </a>
 				                            </li>
-				                            <li>
+				                            <li class="<?php echo $this->uri->segment(2) == 'menu' ? 'nav-active': '' ?>">
 				                                <a class="nav-link" href="<?= base_url('C_boss/menu') ?>">
 				                                    Menu
 				                                </a>
 											</li>
-											<li>
+											<li class="<?php echo $this->uri->segment(2) == 'bahan' ? 'nav-active': '' ?>">
 				                                <a class="nav-link" href="<?= base_url('C_boss/bahan') ?>">
 				                                    Bahan
 				                                </a>
@@ -223,7 +229,7 @@
 				                            <span>Pegawai</span>
 				                        </a>                        
 									</li>
-									<li>
+									<li class="<?php echo $this->uri->segment(2) == 'akun' ? 'nav-active': '' ?>">
 				                        <a class="nav-link" href="<?= base_url('C_boss/akun') ?>">
 				                            <i class="fas fa-user" aria-hidden="true"></i>
 				                            <span>Akun</span>
@@ -269,31 +275,3 @@
 				
 				</aside>
 				<!-- end: sidebar -->
-
-				<section role="main" class="content-body">
-					<header class="page-header">
-						<h2>Dashboard</h2>
-					
-						<div class="right-wrapper text-right">
-							<ol class="breadcrumbs">
-								<li>
-									<a href="index-2.html">
-										<i class="fas fa-home"></i>
-									</a>
-								</li>
-								<li><span>Dashboard</span></li>
-							</ol>
-					
-							<a class="sidebar-right-toggle" data-open="sidebar-right"></a>
-						</div>
-					</header>
-
-					<!-- start: page -->
-					<div class="row pt-4 mt-1">
-						<div class="col-xl-6">
-							
-						</div>
-					</div>
-					<!-- end: page -->
-				</section>
-			</div>

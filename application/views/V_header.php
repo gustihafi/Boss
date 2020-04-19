@@ -31,6 +31,23 @@
 		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/owl.carousel/assets/owl.carousel.css" />		
 		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/owl.carousel/assets/owl.theme.default.css" />
 		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/elusive-icons/css/elusive-icons.css" />
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/codemirror/lib/codemirror.css" />		
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/codemirror/theme/monokai.css" />
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/jquery-ui/jquery-ui.css" />		
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/jquery-ui/jquery-ui.theme.css" />		
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/select2/css/select2.css" />		
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" />		
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.css" />		
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/bootstrap-timepicker/css/bootstrap-timepicker.css" />				
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/bootstrap-markdown/css/bootstrap-markdown.min.css" />		
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/summernote/summernote-bs4.css" />		
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/codemirror/lib/codemirror.css" />		
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/codemirror/theme/monokai.css" />
+
+		<!-- Specific Page Vendor CSS -->		
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/select2/css/select2.css" />		
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/select2-bootstrap-theme/select2-bootstrap.min.css" />		
+		<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/datatables/media/css/dataTables.bootstrap4.css" />
 
 		<!-- Theme CSS -->
 		<link rel="stylesheet" href="<?= base_url() ?>/assets/css/theme.css" />
