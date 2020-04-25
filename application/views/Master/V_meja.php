@@ -35,7 +35,7 @@
 										</div>
 									</div>
 								</div>
-								<table class="table table-bordered table-striped mb-0" id="datatable-editable">
+								<table class="table table-bordered table-striped mb-0 text-center" id="datatable-editable">
 									<thead>
 										<tr>
 											<th>No</th>
@@ -55,7 +55,7 @@
 											<td class="actions">
 											<button class="btn btn-default btn-sm" data-toggle="modal" data-target="#edit<?= $dt['id_meja']; ?>" title="Edit"><span class="fa fa-edit"></span></button>
 												
-											<a class="btn btn-default btn-sm" href="<?= base_url('C_boss/hapus_meja/'.$dt['id_meja']) ?>" onClick="return confirm('Apakah Yakin Hapus Data?')"><i class="far fa-trash-alt"></i></a>
+											<!-- <a class="btn btn-default btn-sm" href="<?= base_url('C_boss/hapus_meja/'.$dt['id_meja']) ?>" onClick="return confirm('Apakah Yakin Hapus Data?')"><i class="far fa-trash-alt"></i></a> -->
 											</td>
 										</tr>
 										<?php 

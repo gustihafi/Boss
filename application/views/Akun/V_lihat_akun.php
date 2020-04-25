@@ -38,7 +38,7 @@
 									<thead>
 										<tr>
 											<th>No</th>
-											<th>Username</th>
+											<th>Email</th>
 											<th>Level</th>
 											<th>Aksi</th>
 										</tr>
@@ -51,7 +51,7 @@
                                         ?>
 										<tr data-item-id="1">
 											<td><?= $no; ?></td>
-											<td><?= $dt['username'] ?></td>
+											<td><?= $dt['email'] ?></td>
 											<td><?= $dt['level'] ?></td>
 											<td class="actions">
 											<button class="btn btn-default btn-sm" data-toggle="modal" data-target="#edit<?= $dt['id_user']; ?>" title="Edit"><span class="fa fa-edit"></span></button>

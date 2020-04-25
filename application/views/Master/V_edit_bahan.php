@@ -1,40 +1,38 @@
                     
                                                             <!-- Start Modal -->
                                                             <!-- Modaledit -->
-                                                    <div id="edit<?= $dt['id_menu'] ?>" class="modal fade" role="dialog">
+                                                    <div id="edit<?= $dt['id_bahan'] ?>" class="modal fade" role="dialog">
                                                     <div class="modal-dialog modal-lg">
                                                     <!-- konten modal-->
                                                     <div class="modal-content">
                                                         <!-- heading modal -->
                                                         <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        <h4 class="modal-title">Edit Menu</h4>
+                                                        <h4 class="modal-title">Edit Bahan</h4>
                                                         </div>
                                                         <!-- body modal -->
                                                         <div class="modal-body">
-                                                        <form method="POST" action="<?= site_url('C_boss/proses_edit_menu') ?>">
+                                                        <form method="POST" action="<?= site_url('C_boss/proses_edit_bahan') ?>">
                                                         <div class="form-group row">
-                                                            <label class="col-sm-3 control-label text-sm-right pt-2">Kode Menu <span class="required">*</span></label>
+                                                            <label class="col-sm-3 control-label text-sm-right pt-2">Kode Bahan <span class="required">*</span></label>
                                                             <div class="col-sm-6">
-                                                                <input type="text" name="id_menu" value="<?= $dt['id_menu'] ?>" class="form-control" readonly required/>
+                                                                <input type="text" name="id_bahan" value="<?= $dt['id_bahan'] ?>" class="form-control" readonly required/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-sm-3 control-label text-sm-right pt-2">Nama Menu <span class="required">*</span></label>
+                                                            <label class="col-sm-3 control-label text-sm-right pt-2">Nama Bahan <span class="required">*</span></label>
                                                             <div class="col-sm-6">
-                                                                <input type="text" name="nama_menu" value="<?= $dt['nama_menu'] ?>" class="form-control" required/>
+                                                                <input type="text" name="nama_bahan" value="<?= $dt['nama_bahan'] ?>" class="form-control" required/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-sm-3 control-label text-sm-right pt-2">Jenis Menu <span class="required">*</span></label>
+                                                            <label class="col-sm-3 control-label text-sm-right pt-2">Status Bahan</label>
                                                             <div class="col-sm-6">
-                                                                <input type="text" name="jenis_menu" value="<?= $dt['jenis_menu'] ?>" class="form-control" required/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-3 control-label text-sm-right pt-2">Harga Menu <span class="required">*</span></label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" name="harga_menu" value="<?= $dt['harga_menu'] ?>" class="form-control" required/>
+                                                                <select id="states" name="status_bahan" data-plugin-selectTwo class="form-control populate" title="Pilih Level" required>
+                                                                    <option value="">Pilih Status</option>
+                                                                    <option value="Tersedia" <?php if($dt['status_bahan'] == "Tersedia"){ echo "selected";} ?>>Tersedia</option>
+                                                                    <option value="Tidak Tersedia" <?php if($dt['status_bahan'] == "Tidak Tersedia"){ echo "selected";} ?>>Tidak Tersedia</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>

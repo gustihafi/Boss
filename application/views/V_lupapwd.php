@@ -51,19 +51,13 @@
 					</div>
 					<div class="card-body">
 						<div class="alert alert-info">
-							<p class="m-0">Masukkan Username & Password</p>
+							<p class="m-0">Masukkan Email</p>
 						</div>
 
 						<form>
-                            <div class="form-group mb-0">
-								<div class="input-group">
-									<input name="username" type="text" placeholder="Username" class="form-control form-control-lg" />
-								</div>
-                            </div>
-                            <br>
 							<div class="form-group mb-0">
 								<div class="input-group">
-									<input name="password" type="password" placeholder="Password" class="form-control form-control-lg" />
+									<input name="email" type="email" placeholder="Email" class="form-control form-control-lg" />
 									<span class="input-group-append">
 										<button class="btn btn-danger" type="submit" name="reset">Reset!</button>
 									</span>

@@ -14,12 +14,12 @@
                                                         <div class="modal-body">
                                                         <form method="POST" action="<?= site_url('C_boss/proses_edit_akun') ?>">
                                                         <div class="form-group row">
-                                                            <label class="col-sm-3 control-label text-sm-right pt-2">Username <span class="required">*</span></label>
+                                                            <label class="col-sm-3 control-label text-sm-right pt-2">Email <span class="required">*</span></label>
                                                             <div class="col-sm-6">
                                                                 <!-- id_user -->
                                                                 <input type="hidden" name="id_user" value="<?= $dt['id_user'] ?>" class="form-control" placeholder="contoh: thayibramadhan" required/>
                                                                 <!-- username -->
-                                                                <input type="text" name="username" value="<?= $dt['username'] ?>" class="form-control" placeholder="contoh: thayibramadhan" required/>
+                                                                <input type="email" name="email" value="<?= $dt['email'] ?>" class="form-control" placeholder="contoh: thayibramadhan" required/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">

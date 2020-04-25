@@ -218,12 +218,6 @@
 				                        </a>                        
 									</li>
 									<li>
-				                        <a class="nav-link" href="<?= base_url('C_boss/belanja') ?>">
-				                            <i class="fas fa-shopping-basket" aria-hidden="true"></i>
-				                            <span>Belanja</span>
-				                        </a>                        
-				                    </li>
-									<li>
 				                        <a class="nav-link" href="<?= base_url('C_boss/pegawai') ?>">
 				                            <i class="fas fa-users" aria-hidden="true"></i>
 				                            <span>Pegawai</span>

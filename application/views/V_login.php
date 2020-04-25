@@ -52,12 +52,12 @@
 					<div class="card-body">
 						<form action="<?= base_url('Auth/login') ?>" method="post">
 							<div class="form-group mb-3">
-								<label>Username</label>
+								<label>Email</label>
 								<div class="input-group">
-									<input name="username" type="text" class="form-control form-control-lg" />
+									<input name="email" type="email" class="form-control form-control-lg" />
 									<span class="input-group-append">
 										<span class="input-group-text">
-											<i class="fas fa-user"></i>
+											<i class="fas fa-envelope"></i>
 										</span>
 									</span>
 								</div>
