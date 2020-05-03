@@ -3,7 +3,6 @@
 class M_boss extends CI_Model
 {
 
-
     // =========== AKUN =========== //
 
     public function lihat_akun(){
@@ -27,6 +26,47 @@ class M_boss extends CI_Model
 			);
 		$this->db->where($where);
 		$this->db->delete('user');
+	}
+
+	// =========== AKUN =========== //
+
+    public function lihat_pgw(){
+        return $this->db->query('SELECT * FROM pegawai JOIN user ON pegawai.id_user=user.id_user')->result_array();
+    }
+
+    public function proses_tambah_pgw($pgw)
+	{
+		$this->db->insert('pegawai',$pgw);
+	}
+
+	public function kode_pgw(){
+		$this->db->select('RIGHT(pegawai.id_pegawai,2) as kode', FALSE);
+		$this->db->order_by('id_pegawai','DESC');
+		$this->db->limit(1);
+		$query = $this->db->get('pegawai');
+		if($query->num_rows() > 0){
+			$data = $query->row();
+			$kode = intval($data->kode) + 1;
+		}else{
+			$kode = 1;
+		}
+
+		$kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT);
+		$kodejadi = "PGW-".$kodemax;
+		return $kodejadi;
+	}
+	
+	public function proses_edit_pgw($pgw,$id_pgw){
+		$this->db->where('id_pegawai',$id_pgw);
+		$this->db->update('pegawai',$data);
+	}
+
+	public function proses_hapus_pgw($id){
+		$where = array(
+			'id_user' => $id
+			);
+		$this->db->where($where);
+		$this->db->delete('pegawai');
 	}
 
 	// =========== Master Meja =========== //
@@ -71,11 +111,26 @@ class M_boss extends CI_Model
 		$this->db->where('id_menu',$id_menu);
 		$this->db->update('menu',$data);
 	}
+
+	public function view_by($id_menu){
+		$this->db->where('id_menu', $id_menu);
+		return $this->db->get('menu')->row();
+	}
+
+	public function _deleteImage($id_menu){
+		$menu 	= $this->view_by($id_menu);
+		if ($menu->foto != ""){
+			$filename 	= explode(".", $menu->foto)[0];
+			return array_map('unlink', glob(FCPATH."images/$filename.*"));
+		}
+
+	}
     
     public function proses_hapus_menu($id_menu){
 		$where = array(
 			'id_menu' => $id_menu
 			);
+		$this->_deleteImage($id_menu);
 		$this->db->where($where);
 		$this->db->delete('menu');
 	}

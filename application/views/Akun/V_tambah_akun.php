@@ -59,7 +59,7 @@
 											<label class="col-sm-3 control-label text-sm-right pt-2">Level</label>
 											<div class="col-sm-6">
 												<select id="states" name="level" data-plugin-selectTwo class="form-control populate" title="Pilih Level" required>
-													<option value="">Pilih Level</option>
+													<option selected="selected" disabled="">Pilih Level</option>
 													<option value="Admin">Admin</option>
 													<option value="Kasir">Kasir</option>
 													<option value="Dapur">Dapur</option>

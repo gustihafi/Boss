@@ -1,4 +1,4 @@
-</section>
+
 <!-- Vendor -->
 <script src="<?= base_url() ?>/assets/vendor/jquery/jquery.js"></script>		
 		<script src="<?= base_url() ?>/assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>		

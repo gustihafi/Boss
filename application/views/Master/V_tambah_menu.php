@@ -20,7 +20,7 @@
 					</header>
                     <div class="row">
 						<div class="col-lg-12">
-							<form id="form" method="POST" action="<?= base_url('C_boss/proses_tambah_menu') ?>" class="form-horizontal">
+							<form id="form" method="POST" action="<?= base_url('C_boss/proses_tambah_menu') ?>" enctype="multipart/form-data" class="form-horizontal">
 								<section class="card">
 									<header class="card-header">
 										<div class="card-actions">
@@ -34,6 +34,7 @@
 										</p>
 									</header>
 									<div class="card-body">
+									<?= $this->session->flashdata('msg'); ?>
                                         <div class="form-group row">
 											<label class="col-sm-3 control-label text-sm-right pt-2">Kode Menu <span class="required">*</span></label>
 											<div class="col-sm-6">
@@ -56,6 +57,13 @@
 											<label class="col-sm-3 control-label text-sm-right pt-2">Harga Menu <span class="required">*</span></label>
 											<div class="col-sm-6">
 												<input type="number" name="harga_menu" class="form-control" placeholder="contoh: 10000" required/>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-3 control-label text-sm-right pt-2">Foto Menu <span class="required">*</span></label>
+											<div class="col-sm-6">
+												<input type="file" name="foto" class="form-control" required/>
+												*Hanya ekstensi .jpg, .png, .jpeg
 											</div>
 										</div>
 									</div>

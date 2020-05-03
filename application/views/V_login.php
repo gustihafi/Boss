@@ -50,6 +50,7 @@
 						<h2 class="title text-uppercase font-weight-bold m-0"><i class="fas fa-user mr-1"></i> Sign In</h2>
 					</div>
 					<div class="card-body">
+					<p><?= $this->session->flashdata('msg'); ?></p>
 						<form action="<?= base_url('Auth/login') ?>" method="post">
 							<div class="form-group mb-3">
 								<label>Email</label>
@@ -69,7 +70,7 @@
 									<a href="<?= base_url('Auth/lupa_password') ?>" class="float-right">Lost Password?</a>
 								</div>
 								<div class="input-group">
-									<input name="pwd" type="password" class="form-control form-control-lg" />
+									<input name="password" type="password" class="form-control form-control-lg" />
 									<span class="input-group-append">
 										<span class="input-group-text">
 											<i class="fas fa-lock"></i>

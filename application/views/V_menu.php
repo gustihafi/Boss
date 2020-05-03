@@ -134,8 +134,8 @@
 								<img src="<?= base_url() ?>/assets/img/logged-user.jpg" alt="Joseph Doe" class="rounded-circle" data-lock-picture="<?= base_url() ?>/assets/img/logged-user.jpg" />
 							</figure>
 							<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
-								<span class="name">John Doe Junior</span>
-								<span class="role">administrator</span>
+								<span class="name"><?= $this->session->level; ?></span>
+								<span class="role"><?= $this->session->email; ?></span>
 							</div>
 			
 							<i class="fa custom-caret"></i>
@@ -217,7 +217,7 @@
 				                            <span>Transaksi</span>
 				                        </a>                        
 									</li>
-									<li>
+									<li class="<?php echo $this->uri->segment(2) == 'pegawai' ? 'nav-active': '' ?>">
 				                        <a class="nav-link" href="<?= base_url('C_boss/pegawai') ?>">
 				                            <i class="fas fa-users" aria-hidden="true"></i>
 				                            <span>Pegawai</span>
@@ -243,7 +243,7 @@
 									</li>
 									<hr class="separator" />
 									<li>
-										<a class="nav-link" href="<?= base_url('C_boss/logout') ?>" onClick="return confirm('Apakah Yakin Logout?')">
+										<a class="nav-link" href="<?= base_url('Auth/logout') ?>" onClick="return confirm('Apakah Yakin Logout?')">
 											<i class="fas fa-power-off" aria-hidden="true"></i>
 											<span>Logout</span>
 										</a> 

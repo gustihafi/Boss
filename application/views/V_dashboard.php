@@ -19,7 +19,7 @@
 					<!-- start: page -->
 					<div class="row pt-4 mt-1">
 						<div class="col-xl-6">
-							
+							<?= $this->session->flashdata('msg'); ?>
 						</div>
 					</div>
 					<!-- end: page -->

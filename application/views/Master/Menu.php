@@ -42,7 +42,8 @@
                                             <th>Kode Menu</th>
                                             <th>Nama Menu</th>
                                             <th>Jenis Menu</th>
-                                            <th>Harga Menu</th>
+											<th>Harga Menu</th>
+											<th>Foto</th>
 											<th>Aksi</th>
 										</tr>
 									</thead>
@@ -57,7 +58,8 @@
                                             <td><?= $dt['id_menu'] ?></td>
                                             <td><?= $dt['nama_menu'] ?></td>
                                             <td><?= $dt['jenis_menu'] ?></td>
-                                            <td><?= $dt['harga_menu'] ?></td>
+											<td><?= $dt['harga_menu'] ?></td>
+											<td><img width="100px" src="<?= base_url('images/'.$dt['foto']) ?>" /></td>
 											<td class="actions">
 											<button class="btn btn-default btn-sm" data-toggle="modal" data-target="#edit<?= $dt['id_menu']; ?>" title="Edit"><span class="fa fa-edit"></span></button>
 												

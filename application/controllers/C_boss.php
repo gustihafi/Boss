@@ -5,6 +5,14 @@ class C_boss extends CI_Controller
     function __construct(){
         parent::__construct();
         $this->load->model('M_boss');
+        if($this->session->userdata('status') != 'login'){
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-ban"></i> Failed!</h4>
+                Harus Login!
+              </div>');
+            redirect('');
+            }
     }
 
     public function index(){
@@ -73,6 +81,84 @@ class C_boss extends CI_Controller
     }
 
 
+    // ================= PEGAWAI ================= //
+
+    public function pegawai(){
+        $data['title'] = '<title>Boss Angkringan</title>';
+        $data['pgw'] = $this->M_boss->lihat_pgw();
+        $this->load->view('V_header',$data);
+        $this->load->view('V_menu');
+        $this->load->view('Pegawai/V_lihat_pgw');
+        $this->load->view('V_footer');
+    }
+
+    public function tambah_pgw(){
+        $data['title'] = '<title>Boss Angkringan</title>';
+        $data['kode'] = $this->M_boss->kode_pgw();
+        $this->load->view('V_header',$data);
+        $this->load->view('V_menu');
+        $this->load->view('Pegawai/V_tambah_pgw');
+        $this->load->view('V_footer');
+    }
+
+    public function proses_tambah_pgw(){
+        $data = array(
+            "id_user"   => '',
+            "email"     => $_POST['email'],
+            "level"     => $_POST['level'],
+            "password"  => md5($_POST['password'])
+        );
+        $this->M_boss->proses_tambah_akun($data);
+
+        $user = $this->db->insert_id();
+        $pgw = array(
+            "id_pegawai"    => $_POST['id_pegawai'],
+            "nama_pegawai"  => $_POST['nama_pegawai'],
+            "alamat"  => $_POST['alamat'],
+            "jenis_kelamin"  => $_POST['jenis_kelamin'],
+            "telpon"  => $_POST['telpon'],
+            "id_user"  => $user
+        );
+        $this->M_boss->proses_tambah_pgw($pgw);
+		echo "<script language='javascript'>alert('Data Berhasil Disimpan'); document.location='". base_url('C_boss/pegawai')."';</script>";
+    }
+
+    public function proses_edit_pgw(){
+        if(!empty($_POST['pwd_baru'])){
+            $data = array(
+                'email' => $_POST['email'], 
+                'password' => md5($_POST['pwd_baru']),
+                'level' => $_POST['level'] 
+            );
+        }else{
+            $data = array(
+                'email' => $_POST['email'], 
+                'password' => $_POST['pwd_lama'],
+                'level' => $_POST['level'] 
+            );
+        }
+        $id_user = $_POST['id_user'];
+        $this->M_boss->proses_edit_akun($data,$id_user);
+            
+        $pgw = array(
+            "nama_pegawai"  => $_POST['nama_pegawai'],
+            "alamat"  => $_POST['alamat'],
+            "jenis_kelamin"  => $_POST['jenis_kelamin'],
+            "telpon"  => $_POST['telpon'],
+            "id_user"  => $_POST['id_user']
+        );
+        $id_pgw = $_POST['id_pegawai'];
+        $this->M_boss->proses_edit_pgw($pgw,$id_pgw);
+        echo "<script language='javascript'>alert('Data Berhasil Disimpan'); document.location='". base_url('C_boss/pegawai')."';</script>";
+    }
+
+    public function hapus_pgw($id){
+        $this->M_boss->proses_hapus_akun($id);
+        $this->M_boss->proses_hapus_pgw($id);
+        echo "<script language='javascript'>alert('Data Berhasil dihapus'); document.location='". base_url('C_boss/pegawai')."';</script>";
+    }
+
+
     // ================= MASTER Meja ================= //
 
     public function meja(){
@@ -118,6 +204,26 @@ class C_boss extends CI_Controller
 
     // ================= MASTER Menu ================= //
 
+    private function _uploadImage(){
+		$config['upload_path']		= 'images/';
+		$config['allowed_types']	= 'jpg|png|jpeg';
+		$config['file_name']		= $_POST['nama_menu'];
+		$config['max_size']			= 2048;
+		$config['overwrite']		= true;
+
+		$this->load->library('upload', $config);
+		if($this->upload->do_upload('foto')){
+			return $this->upload->data("file_name");
+		}else{
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-ban"></i> Failed!</h4>
+                Data gagal di upload
+              </div>');
+			echo "<script>history.go(-1) </script>";
+		}
+	}
+
     public function menu(){
         $data['title'] = '<title>Boss Angkringan</title>';
         $data['menu'] = $this->M_boss->lihat_menu();
@@ -137,11 +243,13 @@ class C_boss extends CI_Controller
     }
 
     public function proses_tambah_menu(){
+        $foto = $this->_uploadImage();
 		$data = array(
             'id_menu' => $_POST['id_menu'],
 			'nama_menu' => $_POST['nama_menu'],
             'jenis_menu' => $_POST['jenis_menu'],
-            'harga_menu' => $_POST['harga_menu']
+            'harga_menu' => $_POST['harga_menu'],
+            'foto'      => $foto
 		);
             $this->M_boss->proses_tambah_menu($data);
 			echo "<script language='javascript'>alert('Data Berhasil Disimpan'); document.location='". base_url('C_boss/menu')."';</script>";
@@ -149,15 +257,27 @@ class C_boss extends CI_Controller
     }
 
     public function proses_edit_menu(){
-		$data = array(
-            'nama_menu' => $_POST['nama_menu'],
-            'jenis_menu' => $_POST['jenis_menu'],
-            'harga_menu' => $_POST['harga_menu']
-        );
+        if(!empty($_FILES['foto']['name'])){
+            $data = array(
+                'nama_menu' => $_POST['nama_menu'],
+                'jenis_menu' => $_POST['jenis_menu'],
+                'harga_menu' => $_POST['harga_menu'],
+                'foto'      => $this->_uploadImage()
+            );
+        }else{
+            $data = array(
+                'nama_menu' => $_POST['nama_menu'],
+                'jenis_menu' => $_POST['jenis_menu'],
+                'harga_menu' => $_POST['harga_menu'],
+                'foto'      => $_POST['old_foto']
+            );
+        }
+		
 			$id_menu = $_POST['id_menu'];
 			$this->M_boss->proses_edit_menu($data,$id_menu);
 			echo "<script language='javascript'>alert('Data Berhasil Disimpan'); document.location='". base_url('C_boss/menu')."';</script>";
-	}
+    }
+    
 
     public function hapus_menu($id_menu){
         $this->M_boss->proses_hapus_menu($id_menu);
